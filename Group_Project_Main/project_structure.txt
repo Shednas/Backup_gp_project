@@ -22,11 +22,17 @@ Group_Project_Main/
 │   │   │       └── lecturer_course_dashboard.html.php
 │   │   │   
 │   │   ├── public/
+│   │   │   ├── api/
+│   │   │   │   ├── api_login.php
+│   │   │   │   └── api_logout.php
 │   │   │   ├── assets/
 │   │   │   │   ├── css/
-│   │   │   │   │   └── style.css
+│   │   │   │   │   ├── user.css
+│   │   │   │   │   ├── admin.css
+│   │   │   │   │   └── portal_login.css
 │   │   │   │   ├── js/
-│   │   │   │   │   └── main.js
+│   │   │   │   │   ├── main.js
+│   │   │   │   │   └── login_logout.js
 │   │   │   │   ├── images/
 │   │   │   │   ├── files/
 │   │   │   │   │   ├── courses/
