@@ -1,6 +1,6 @@
 <section class="courses">
     <h2><?php echo $is_lecturer ? 'My Courses' : 'Courses'; ?></h2>
-    <p style="color: #6c757d; margin-bottom: 25px;">
+    <p class="courses-description">
         <?php if ($is_lecturer): ?>
             Manage and monitor your teaching courses
         <?php else: ?>
@@ -9,7 +9,7 @@
     </p>
 
     <?php if ($error_message): ?>
-        <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #f1aeb5;">
+        <div class="error-message">
             ⚠️ <?php echo htmlspecialchars($error_message); ?>
         </div>
     <?php endif; ?>
@@ -98,7 +98,7 @@
                                 <?php if ($course['image_course']): ?>
                                     <img src="assets/images/<?php echo htmlspecialchars($course['image_course']); ?>" 
                                          alt="<?php echo htmlspecialchars($course['title']); ?>" 
-                                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                                         class="course-icon">
                                 <?php else: ?>
                                     <div style="color: white; font-size: 28px;">📚</div>
                                 <?php endif; ?>

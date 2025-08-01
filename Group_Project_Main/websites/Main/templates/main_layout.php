@@ -6,14 +6,13 @@ require_once __DIR__ . '/../src/helper.php';
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($page_title ?? 'Technify University Portal'); ?></title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/user.css">
 </head>
 <body class="<?php echo htmlspecialchars($page_class ?? 'main-page'); ?>">
 
     <header class="header">
-        <div class="logo">Technify University</div>
+        <div class="logo"><img src="../assets/images/tu.png" alt="Technify University Logo">Technify University</div>
         <nav class="header-nav">
-            <input type="search" class="search-box" placeholder="Search...">
             <?php if (isset($header_actions)) echo $header_actions; ?>
         </nav>
     </header>

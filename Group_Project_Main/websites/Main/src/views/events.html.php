@@ -83,7 +83,7 @@
                                     <?php 
                                     $is_registered = isset($_SESSION['registered_events']) && in_array($event['id'], $_SESSION['registered_events']);
                                     ?>
-                                    <form method="POST" style="display: inline;">
+                                    <form method="POST" class="register-form">
                                         <input type="hidden" name="event_id" value="<?php echo $event['id']; ?>">
                                         <?php if ($is_registered): ?>
                                             <button type="submit" name="unregister_event" class="btn btn-register registered btn-small">

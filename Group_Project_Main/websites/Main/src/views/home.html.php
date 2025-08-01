@@ -37,6 +37,7 @@
         }
         ?>
     </section>
+    <img src="../assets/images/home.png" alt="home image">
 
     <section class="news">
         <h2>News</h2>

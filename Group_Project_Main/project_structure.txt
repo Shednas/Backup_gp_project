@@ -1,65 +1,65 @@
-Project Structure
-=================
-
-websites/
-│
-├── university_website.sql
-│
-├── Main/
-│   ├── public/
-│   │   ├── index.php
-│   │   ├── .htaccess
-│   │   └── assets/
-│   │       ├── css/
-│   │       │   └── style.css
-│   │       └── js/
-│   │           └── main.js
-│   │
-│   ├── src/
-│   │   ├── autoload.php
-│   │   ├── db.php
-│   │   ├── helper.php
-│   │   ├── controllers/
-│   │   │   ├── AuthController.php
-│   │   │   ├── CourseController.php
-│   │   │   ├── CourseDashboardController.php
-│   │   │   ├── EventsController.php
-│   │   │   ├── HomeController.php
-│   │   │   └── ProfileController.php
-│   │   └── views/
-│   │       ├── courses.html.php
-│   │       ├── course_dashboard.html.php
-│   │       ├── error.html.php
-│   │       ├── events.html.php
-│   │       ├── home.html.php
-│   │       ├── login.html.php
-│   │       └── profile.html.php
-│   │
-│   ├── templates/
-│   │   ├── admin_layout.php
-│   │   └── main_layout.php
-│   │
-│   ├── lecturer/
-│   │   ├── controllers/
-│   │   │   └── LecturerCourseController.php
-│   │   └── views/
-│   │       └── lecturer_course_dashboard.html.php
-│   │
-│   └── admin/
-│       ├── controllers/
-│       │   ├── DashboardController.php
-│       │   ├── ManageAnnouncementsController.php
-│       │   ├── ManageCoursesController.php
-│       │   ├── ManageEventsController.php
-│       │   └── ManageUsersController.php
-│       └── views/
-│           ├── dashboard.html.php
-│           ├── manage_announcements.html.php
-│           ├── manage_courses.html.php
-│           ├── manage_events.html.php
-│           └── manage_users.html.php
-│
-├── README.md
-├── PHP.Dockerfile
+Group_Project_Main/
+├── websites/
+│   ├── Main/
+│   │   ├── admin/
+│   │   │   ├── controllers/
+│   │   │   │   ├── DashboardController.php
+│   │   │   │   ├── ManageAnnouncementsController.php
+│   │   │   │   ├── ManageCoursesController.php
+│   │   │   │   ├── ManageEventsController.php
+│   │   │   │   └── ManageUsersController.php
+│   │   │   ├── views/
+│   │   │       ├── dashboard.html.php
+│   │   │       ├── manage_announcements.html.php
+│   │   │       ├── manage_courses.html.php
+│   │   │       ├── manage_events.html.php
+│   │   │       └── manage_users.html.php
+│   │   │  
+│   │   ├── lecturer/
+│   │   │   ├── controllers/
+│   │   │   │   └── LecturerCourseController.php
+│   │   │   ├── views/
+│   │   │       └── lecturer_course_dashboard.html.php
+│   │   │   
+│   │   ├── public/
+│   │   │   ├── assets/
+│   │   │   │   ├── css/
+│   │   │   │   │   └── style.css
+│   │   │   │   ├── js/
+│   │   │   │   │   └── main.js
+│   │   │   │   ├── images/
+│   │   │   │   ├── files/
+│   │   │   │   │   ├── courses/
+│   │   │   │   │   ├── assignments/
+│   │   │   │   │   └── submissions/
+│   │   │   │   └── uploads/
+│   │   │   ├── .htaccess
+│   │   │   └── index.php
+│   │   ├── src/
+│   │   │   ├── controllers/
+│   │   │   │   ├── AuthController.php
+│   │   │   │   ├── CourseDashboardController.php
+│   │   │   │   ├── CourseController.php
+│   │   │   │   ├── EventsController.php
+│   │   │   │   ├── HomeController.php
+│   │   │   │   └── ProfileController.php
+│   │   │   ├── views/
+│   │   │   │   ├── course_dashboard.html.php
+│   │   │   │   ├── courses.html.php
+│   │   │   │   ├── error.html.php
+│   │   │   │   ├── events.html.php
+│   │   │   │   ├── home.html.php
+│   │   │   │   ├── login.html.php
+│   │   │   │   └── profile.html.php
+│   │   │   ├── autoload.php
+│   │   │   ├── db.php
+│   │   │   └── helper.php
+│   │   └── templates/
+│   │       ├── admin_layout.php
+│   │       └── main_layout.php
+│   └── university_website.sql
 ├── docker-compose.yml
-└── nginx.conf
+├── nginx.conf
+├── PHP.Dockerfile
+├── project_structure.txt
+└── README.md

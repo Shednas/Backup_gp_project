@@ -68,13 +68,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } elseif (isset($_POST['delete_user'])) {
             $user_id = (int)($_POST['user_id'] ?? 0);
+            $user_to_delete = fetchOne("SELECT * FROM users WHERE id = ?", [$user_id]);
+
             if ($user_id === $_SESSION['user_id']) {
                 $error = "You cannot delete your own account!";
+            } elseif ($user_to_delete && $user_to_delete['is_super_admin']) {
+                $error = "You cannot delete the super admin!";
             } else {
                 query("DELETE FROM users WHERE id = ?", [$user_id]);
                 $message = "User deleted successfully!";
             }
-
+            
         } elseif (isset($_POST['assign_course'])) {
             $lecturer_id = (int)($_POST['lecturer_id'] ?? 0);
             $course_id = (int)($_POST['course_id'] ?? 0);

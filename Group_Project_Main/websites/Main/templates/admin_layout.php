@@ -49,15 +49,14 @@ $nav_items = getAdminNavItems();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><?= htmlspecialchars($page_title) ?></title>
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
     <?= $additional_css ?>
 </head>
 <body class="<?= htmlspecialchars($page_class) ?>">
     <header class="header">
-        <div class="logo">Technify University</div>
+        <div class="logo"><img src="../assets/images/tu.png" alt="Technify University Logo">Technify University</div>
         <nav class="header-nav">
-            <input type="search" class="search-box" placeholder="Search..." />
-            <span style="color: white; margin-left: 15px;">Admin Panel</span>
+            <span>Admin Panel</span>
             <?= $header_actions ?>
         </nav>
     </header>

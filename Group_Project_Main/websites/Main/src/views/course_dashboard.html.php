@@ -1,3 +1,8 @@
+<?php
+// Define base URL for routing consistency
+$base_url = 'index.php?page=course_dashboard&id=' . urlencode($course_id);
+?>
+
 <a href="index.php?page=courses" class="back-link">
     ← Back to Courses
 </a>
@@ -17,7 +22,7 @@
         <h1 class="course-title-header"><?php echo htmlspecialchars($course['title'] ?? ''); ?></h1>
         <div class="course-code-header"><?php echo htmlspecialchars($course['course_code'] ?? ''); ?></div>
         <div class="course-meta-header">
-            <span>👨‍🏫 <?php echo htmlspecialchars($course['lecturer'] ?? ''); ?></span>
+        <?php echo htmlspecialchars($course['lecturer'] ?? ''); ?></span>
             <span>🏆 <?php echo htmlspecialchars($course['credits'] ?? ''); ?> Credits</span>
             <span>📅 Term <?php echo htmlspecialchars($course['term'] ?? ''); ?></span>
         </div>
@@ -26,17 +31,24 @@
     <!-- Course Navigation -->
     <nav class="course-nav">
         <?php
-        $sections = ['content' => '📚 Content', 'announcement' => '📢 Announcements', 'grade' => '📊 Grades', 'assignment' => '📝 Assignments', 'submission' => '📤 Submissions'];
+        $sections = [
+            'content' => '📚 Content',
+            'announcement' => '📢 Announcements',
+            'grade' => '📊 Grades',
+            'assignment' => '📝 Assignments',
+            'submission' => '📤 Submissions'
+        ];
         foreach ($sections as $key => $label):
             $activeClass = ($current_section === $key) ? 'active' : '';
         ?>
-            <a href="?page=course_dashboard&id=<?php echo urlencode($course_id); ?>&section=<?php echo urlencode($key); ?>" class="course-nav-item <?php echo $activeClass; ?>">
+            <a href="<?php echo $base_url; ?>&section=<?php echo urlencode($key); ?>" 
+               class="course-nav-item <?php echo $activeClass; ?>">
                 <?php echo $label; ?>
             </a>
         <?php endforeach; ?>
     </nav>
 
-    <!-- Course Content -->
+    <!-- Course Content Section -->
     <?php if ($current_section === 'content'): ?>
         <div class="course-description">
             <h2>Description</h2>
@@ -90,7 +102,6 @@
                 <tbody>
                     <?php foreach ($grades as $grade): ?>
                         <?php
-                        // Calculate percentage grade or fallback to points earned
                         $percentage = (isset($grade['points_earned'], $grade['points_possible']) && $grade['points_possible'] > 0)
                             ? round(($grade['points_earned'] / $grade['points_possible']) * 100, 2) . '%'
                             : htmlspecialchars($grade['points_earned'] ?? 'N/A');
