@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/../db.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $error_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
@@ -17,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         $_SESSION['is_student'] = (bool)$user['check_student'];
         $_SESSION['is_lecturer'] = (bool)$user['check_lecturer'];
 
-        // Redirect based on role
+        // Redirect after login
         if ($_SESSION['is_admin']) {
-            header('Location: index.php?page=admin_dashboard');
+            header('Location: ../index.php?page=admin_dashboard');
         } else {
-            header('Location: index.php');
+            header('Location: ../index.php');
         }
         exit;
     } else {
@@ -29,5 +33,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     }
 }
 
-// Render the login view
+// Show login form
 require __DIR__ . '/../views/login.html.php';

@@ -50,5 +50,6 @@ require_once __DIR__ . '/../src/helper.php';
     </div>
 
     <?php if (isset($additional_js)) echo $additional_js; ?>
+    <script src="/assets/js/login_logout.js"></script>
 </body>
 </html>
