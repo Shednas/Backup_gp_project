@@ -128,7 +128,6 @@ if ($_POST) {
                 if ($submission) {
                     $assignment_id = $submission['assignment_id'];
                     $student_id = $submission['student_id'];
-                    $course_id = $course_id; // already in scope
                     // Get assignment info for max_score
                     $assignment = fetchOne("SELECT * FROM assignments WHERE id = ?", [$assignment_id]);
                     $max_score = $assignment ? $assignment['max_score'] : 100;
@@ -194,3 +193,4 @@ $content = ob_get_clean();
 
 // Load layout
 require __DIR__ . '/../../templates/main_layout.php';
+
