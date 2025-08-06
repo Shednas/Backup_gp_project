@@ -1,0 +1,140 @@
+/**
+ * TECHNIFY UNIVERSITY
+ * Project Structure Documentation
+ * ==============================
+ * Last Updated: August 6, 2023
+ */
+
+GROUP_PROJECT_MAIN/
+│
+├── websites/                        # Application code
+│   │
+│   ├── Main/                        # Main application directory
+│   │   │
+│   │   ├── admin/                   # Admin panel components
+│   │   │   ├── controllers/         # Admin controllers
+│   │   │   │   ├── DashboardController.php      # Admin dashboard
+│   │   │   │   ├── ManageAnnouncementsController.php  # Notice & news management
+│   │   │   │   ├── ManageCoursesController.php  # Course CRUD operations
+│   │   │   │   ├── ManageEventsController.php   # Event management
+│   │   │   │   └── ManageUsersController.php    # User management
+│   │   │   │
+│   │   │   └── views/               # Admin views
+│   │   │       ├── dashboard.html.php          # Admin dashboard UI
+│   │   │       ├── manage_announcements.html.php  # Announcements UI
+│   │   │       ├── manage_courses.html.php     # Courses management UI
+│   │   │       ├── manage_events.html.php      # Events management UI
+│   │   │       └── manage_users.html.php       # User management UI
+│   │   │
+│   │   ├── lecturer/                # Lecturer-specific components
+│   │   │   ├── controllers/         # Lecturer controllers
+│   │   │   │   └── LecturerCourseController.php  # Course management for lecturers
+│   │   │   │
+│   │   │   └── views/               # Lecturer views
+│   │   │       └── lecturer_course_dashboard.html.php  # Lecturer course UI
+│   │   │
+│   │   ├── public/                  # Publicly accessible files (web root)
+│   │   │   │
+│   │   │   ├── assets/              # Frontend assets
+│   │   │   │   ├── css/             # Stylesheets
+│   │   │   │   │   ├── admin.css               # Admin panel styles
+│   │   │   │   │   ├── portal_login.css        # Login/portal styles
+│   │   │   │   │   └── user.css                # Main user interface styles
+│   │   │   │   │
+│   │   │   │   ├── js/              # JavaScript files
+│   │   │   │   │   └── main.js                 # Core application functionality
+│   │   │   │   │
+│   │   │   │   ├── images/          # Images and icons
+│   │   │   │   │   ├── home.png                # Home page image
+│   │   │   │   │   ├── login.png               # Login background
+│   │   │   │   │   ├── portal.png              # Portal background
+│   │   │   │   │   ├── tu.png                  # University logo
+│   │   │   │   │   └── news/                   # News article images
+│   │   │   │   │
+│   │   │   │   └── files/           # Processed/verified files
+│   │   │   │       ├── assignments/         # Assignment files
+│   │   │   │       ├── courses/             # Course materials
+│   │   │   │       └── submissions/         # Student submissions
+│   │   │   │
+│   │   │   ├── uploads/             # User upload directory (raw uploads)
+│   │   │   │   ├── assignments/         # Assignment uploads
+│   │   │   │   ├── courses/             # Course material uploads
+│   │   │   │   └── submissions/         # Submission uploads
+│   │   │   │
+│   │   │   ├── .htaccess               # URL rewriting rules for clean URLs
+│   │   │   └── index.php               # Main application entry point
+│   │   │
+│   │   ├── src/                     # Core application code
+│   │   │   ├── controllers/         # Main controllers
+│   │   │   │   ├── AuthController.php          # Authentication & authorization
+│   │   │   │   ├── CourseController.php        # Course listing and catalog
+│   │   │   │   ├── CourseDashboardController.php  # Course dashboard
+│   │   │   │   ├── EventsController.php        # Events listing and details
+│   │   │   │   ├── HomeController.php          # Home page logic
+│   │   │   │   └── ProfileController.php       # User profile management
+│   │   │   │
+│   │   │   ├── views/               # Main views
+│   │   │   │   ├── course_dashboard.html.php   # Course details UI
+│   │   │   │   ├── courses.html.php            # Course listing UI
+│   │   │   │   ├── events.html.php             # Events UI
+│   │   │   │   ├── home.html.php               # Homepage UI
+│   │   │   │   ├── login.html.php              # Login UI
+│   │   │   │   ├── portal.html.php             # Portal landing page
+│   │   │   │   └── profile.html.php            # User profile UI
+│   │   │   │
+│   │   │   ├── autoload.php            # Class autoloader
+│   │   │   ├── db.php                  # Database connection handler
+│   │   │   └── helper.php              # Common utility functions
+│   │   │
+│   │   └── templates/               # Layout templates
+│   │       ├── admin_layout.php        # Admin layout template
+│   │       └── main_layout.php         # Main user layout template
+│   │
+│   └── university_website.sql          # Database schema and seed data
+│
+├── docker-compose.yml                  # Docker services configuration (PHP, Nginx, MariaDB, PHPMyAdmin)
+├── nginx.conf                          # Nginx web server config with routing rules
+├── PHP.Dockerfile                      # PHP 8.1 container with required extensions
+├── project_structure.txt               # This comprehensive documentation file
+└── README.md                           # Installation & setup instructions
+
+/**
+ * DATABASE STRUCTURE
+ * =================
+ * Key tables:
+ * - users                : User accounts and credentials
+ * - roles                : User roles (admin, lecturer, student, super_admin)
+ * - user_roles           : Links users to their assigned roles (junction table)
+ * - courses              : Course information and metadata
+ * - lecturer_courses     : Assigns lecturers to courses (junction table)
+ * - student_enrollments  : Enrolls students in courses (junction table)
+ * - assignments          : Course assignment definitions and requirements
+ * - assignment_submissions : Student submissions for assignments with grades
+ * - events               : University events calendar and registration
+ * - notices              : System announcements and important alerts
+ * - news                 : University news articles and publications
+ * 
+ * ARCHITECTURE OVERVIEW
+ * ====================
+ * - MVC-like architecture separating controllers, views, and data
+ * - Role-based access control (RBAC) for security
+ * - Containerized development environment with Docker
+ * - Nginx as web server with PHP-FPM for processing
+ * - MariaDB database for persistent storage
+ * 
+ * DEVELOPMENT WORKFLOW
+ * ===================
+ * 1. Local development using Docker containers (docker-compose up -d)
+ * 2. Database management through PHPMyAdmin (port 8081)
+ * 3. Manual testing with browser-based UI (http://localhost:8080)
+ * 4. File uploads handled by PHP with proper validation
+ * 5. Role-based access testing with multiple user accounts
+ *
+ * DEPLOYMENT INFORMATION
+ * =====================
+ * - Development: Docker containers on localhost (port 8080)
+ * - Production: Apache/Nginx server with PHP-FPM
+ * - Database: MariaDB/MySQL (configured in src/db.php)
+ * - Environment variables should be configured in production
+ * - Default admin account: admin@example.com / password in database
+ */
