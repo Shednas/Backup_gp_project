@@ -1,0 +1,15 @@
+University Management System
+Automated Testing Instructions
+====================================
+
+To validate the core functionalities of the University Management System, please follow the steps below to execute the automated test suite:
+
+1. Ensure all Docker containers are running:
+   docker-compose up -d
+
+2. Run the test script inside the PHP container:
+   docker-compose exec php php /websites/Main/Testing/runAllTests.php
+
+3. Review the terminal output for detailed test results, including pass/fail status for each feature.
+
+For further information on test coverage and evaluation, refer to the project documentation.

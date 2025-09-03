@@ -1,0 +1,164 @@
+/**
+ * TECHNIFY UNIVERSITY
+ * Project Structure Documentation
+ * ==============================
+ * Last Updated: August 16, 2025
+ */
+
+GROUP_PROJECT_MAIN/
+│
+├── docker-compose.yml                  # Docker services configuration (PHP, Nginx, MariaDB, PHPMyAdmin)
+├── nginx.conf                          # Nginx web server config with routing rules
+├── PHP.Dockerfile                      # PHP 8.1 container with required extensions
+├── project_structure.txt               # This Structure file
+├── README.md                           # Installation & setup instructions
+│
+└── websites/                           # Application code
+    │
+    ├── university_website.sql          # Database schema and seed data
+    │
+    └── Main/                           # Main application directory
+        │
+        ├── admin/                      # Admin panel components
+        │   ├── controllers/            # Admin controllers
+        │   │   ├── DashboardController.php      # Admin dashboard
+        │   │   ├── ManageAnnouncementsController.php  # Notice & news management
+        │   │   ├── ManageCoursesController.php  # Course CRUD operations
+        │   │   ├── ManageEventsController.php   # Event management
+        │   │   └── ManageUsersController.php    # User management
+        │   │
+        │   └── views/                  # Admin views
+        │       ├── dashboard.html.php          # Admin dashboard UI
+        │       ├── manage_announcements.html.php  # Announcements UI
+        │       ├── manage_courses.html.php     # Courses management UI
+        │       ├── manage_events.html.php      # Events management UI
+        │       └── manage_users.html.php       # User management UI
+        │
+        ├── lecturer/                   # Lecturer-specific components
+        │   ├── controllers/            # Lecturer controllers
+        │   │   └── LecturerCourseController.php  # Course management for lecturers
+        │   │
+        │   └── views/                  # Lecturer views
+        │       └── lecturer_course_dashboard.html.php  # Lecturer course UI
+        │
+        ├── public/                     # Publicly accessible files (web root)
+        │   │
+        │   ├── assets/                 # Frontend assets
+        │   │   ├── css/                # Stylesheets
+        │   │   │   ├── admin.css               # Admin panel styles
+        │   │   │   ├── portal_login.css        # Login/portal styles
+        │   │   │   └── user.css                # Main user interface styles
+        │   │   │
+        │   │   ├── js/                 # JavaScript files
+        │   │   │   └── main.js                 # Core application functionality
+        │   │   │
+        │   │   ├── files/              # Processed/verified files
+        │   │   │   ├── assignments/            # Assignment files
+        │   │   │   ├── courses/                # Course materials
+        │   │   │   └── submissions/            # Student submissions
+        │   │   │
+        │   │   └── images/             # Images and icons
+        │   │
+        │   ├── uploads/                # User upload directory (raw uploads)
+        │   │   ├── assignments/                # Assignment uploads
+        │   │   ├── courses/                    # Course material uploads
+        │   │   └── submissions/                # Submission uploads
+        │   │
+        │   └── index.php               # Main application entry point
+        │
+        ├── src/                        # Core application code
+        │   ├── controllers/            # Main controllers
+        │   │   ├── AuthController.php          # Authentication & authorization
+        │   │   ├── CourseController.php        # Course listing and catalog
+        │   │   ├── CourseDashboardController.php  # Course dashboard
+        │   │   ├── EventsController.php        # Events listing and details
+        │   │   ├── HomeController.php          # Home page logic
+        │   │   └── ProfileController.php       # User profile management
+        │   │
+        │   ├── views/                  # Main views
+        │   │   ├── course_dashboard.html.php   # Course details UI
+        │   │   ├── courses.html.php            # Course listing UI
+        │   │   ├── events.html.php             # Events UI
+        │   │   ├── home.html.php               # Homepage UI
+        │   │   ├── login.html.php              # Login UI
+        │   │   ├── portal.html.php             # Portal landing page
+        │   │   └── profile.html.php            # User profile UI
+        │   │
+        │   ├── autoload.php            # Class autoloader
+        │   ├── db.php                  # Database connection handler
+        │   ├── helper.php              # Common utility functions
+        │   └── sendUserCredentialsEmail.php  # SendGrid email functionality
+        │
+        ├── templates/                  # Layout templates
+        │   ├── admin_layout.php        # Admin layout template
+        │   └── main_layout.php         # Main user layout template
+        │
+        └── Testing/                    # Automated testing suite
+            ├── howToTest.txt           # Testing instructions
+            └── runAllTests.php         # Automated test runner script
+
+/**
+ * DATABASE STRUCTURE
+ * =================
+ * Key tables:
+ * - users                : User accounts and credentials
+ * - roles                : User roles (admin, lecturer, student, super_admin)
+ * - user_roles           : Links users to their assigned roles (junction table)
+ * - courses              : Course information and metadata
+ * - lecturer_courses     : Assigns lecturers to courses (junction table)
+ * - student_enrollments  : Enrolls students in courses (junction table)
+ * - assignments          : Course assignment definitions and requirements
+ * - assignment_submissions : Student submissions for assignments with grades
+ * - events               : University events calendar and registration
+ * - notices              : System announcements and important alerts
+ * - news                 : University news articles and publications
+ * - course_materials     : Uploaded course materials and resources
+ * - course_announcements : Course-specific announcements
+ * - course_grades        : Grade tracking and reporting
+ * 
+ * ARCHITECTURE OVERVIEW
+ * ====================
+ * - MVC-like architecture separating controllers, views, and data
+ * - Role-based access control (RBAC) for security
+ * - Containerized development environment with Docker
+ * - Nginx as web server with PHP-FPM for processing
+ * - MariaDB database for persistent storage
+ * - SendGrid API integration for email notifications
+ * - Automated testing suite for quality assurance
+ * 
+ * DEVELOPMENT WORKFLOW
+ * ===================
+ * 1. Local development using Docker containers (docker-compose up -d)
+ * 2. Database management through PHPMyAdmin (port 8081)
+ * 3. Manual testing with browser-based UI (http://localhost:8080)
+ * 4. Automated testing with runAllTests.php script
+ * 5. File uploads handled by PHP with proper validation
+ * 6. Role-based access testing with multiple user accounts
+ *
+ * DEPLOYMENT INFORMATION
+ * =====================
+ * - Development: Docker containers on localhost (port 8080)
+ * - Production: Apache/Nginx server with PHP-FPM
+ * - Database: MariaDB/MySQL (configured in src/db.php)
+ * - Environment variables should be configured in production
+ * - Default admin account: admin@example.com / password in database
+ * 
+ * SECURITY FEATURES
+ * ================
+ * - Password hashing using PHP's native cryptographic functions
+ * - SQL injection protection via prepared statements
+ * - Role-based access control (RBAC) system
+ * - Session security and validation
+ * - File upload validation and secure storage
+ * - Input validation and sanitization
+ * - Soft delete functionality for data integrity
+ * 
+ * TESTING AND EVALUATION
+ * =====================
+ * - Automated test suite covering core functionalities
+ * - Security testing for authentication and authorization
+ * - Performance testing under simulated load
+ * - Usability and accessibility compliance validation
+ * - Data integrity and transaction management testing
+ * - Professional test output for documentation
+ */
