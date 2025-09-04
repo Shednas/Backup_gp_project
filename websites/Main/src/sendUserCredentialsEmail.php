@@ -4,6 +4,7 @@
 
 function sendUserCredentialsEmail($to, $username, $password) {
     // --- CONFIG ---
+    // Enter your own API key from SENDGRID
     $SENDGRID_API_KEY = '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';
     $FROM_EMAIL = 'sandesh.2024152@nami.edu.np';
     $FROM_NAME = 'University Admin';
@@ -40,3 +41,4 @@ function sendUserCredentialsEmail($to, $username, $password) {
     }
     curl_close($ch);
 }
+
